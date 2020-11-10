@@ -47,3 +47,15 @@ pytest test_mod.py::TestClass::test_method
 通过标记表达式运行测试
 pytest -m slow
 将运行用@pytest.mark.slow装饰器装饰的所有测试。
+
+
+-----pytest -ra
+该-r选项后接有多个字符，a上面使用的含义是“除通行证外的所有字符”。
+这是可以使用的可用字符的完整列表：
+f -失败
+E -错误
+s -跳过
+x -xfailed
+X -xpass
+p -通过
+P -通过输出
