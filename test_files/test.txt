@@ -1,6 +1,49 @@
+11月10日深入学习pytest框架
+
 pytest操作
 运行某个包下所有文件：pytest -s 包名，运行所有格式为test _ *.py或* _test.py的文件
 pytest-q/--quiet 包名 在本示例和以下示例中，该标志使输出保持简短
 ------pycharm署名Settings (Preferences) --> Editor --> File and Code Templates --> Python Script:
 pytest参数化
 pytest提供内置的fixtures / function参数来请求任意资源
+-------在第几个失败之后停止
+pytest -x           # stop after first failure
+pytest --maxfail=2  # stop after two failures
+-----选择文件测试
+在模块中运行测试
+pytest test_mod.py
+在目录中运行测试
+pytest testing/
+通过关键字表达式运行测试
+pytest -k "test_answer1"
+#执行用例之后输出结果
+=========================================================================== test session starts ============================================================================
+platform darwin -- Python 3.8.2, pytest-6.1.2, py-1.9.0, pluggy-0.13.1
+rootdir: /Users/baijinxing/Documents/pytest
+collected 2 items / 1 deselected / 1 selected
+
+test/test_01.py F                                                                                                                                                    [100%]
+
+================================================================================= FAILURES =================================================================================
+_______________________________________________________________________________ test_answer1 _______________________________________________________________________________
+
+    def test_answer1():
+>       assert func(3) == 5
+E       assert 4 == 5
+E        +  where 4 = func(3)
+
+test/test_01.py:11: AssertionError
+========================================================================= short test summary info ==========================================================================
+FAILED test/test_01.py::test_answer1 - assert 4 == 5
+===================================================================== 1 failed, 1 deselected in 0.08s ====================================================================
+
+
+---------按节点ID运行测试
+每个收集的测试都分配有一个唯一的nodeid名称，该名称由模块文件名后跟说明符（例如类名，函数名和参数化参数）组成，并用::字符分隔。
+要在模块中运行特定的测试，请执行以下操作：
+pytest test_mod.py::test_func
+在命令行中指定测试方法的另一个示例：
+pytest test_mod.py::TestClass::test_method
+通过标记表达式运行测试
+pytest -m slow
+将运行用@pytest.mark.slow装饰器装饰的所有测试。
