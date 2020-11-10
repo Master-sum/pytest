@@ -1,0 +1,6 @@
+pytest操作
+运行某个包下所有文件：pytest -s 包名，运行所有格式为test _ *.py或* _test.py的文件
+pytest-q/--quiet 包名 在本示例和以下示例中，该标志使输出保持简短
+------pycharm署名Settings (Preferences) --> Editor --> File and Code Templates --> Python Script:
+pytest参数化
+pytest提供内置的fixtures / function参数来请求任意资源
