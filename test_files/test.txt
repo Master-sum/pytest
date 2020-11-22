@@ -59,3 +59,5 @@ x -xfailed
 X -xpass
 p -通过
 P -通过输出
+-----使用以下-p选项在命令行中显式提前加载插件
+pytest -p mypluginmodule
